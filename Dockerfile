@@ -19,8 +19,6 @@ ENV VIRTUAL_ENV=/opt/venv \
     PATH="/opt/venv/bin:$PATH" \
     UV_LINK_MODE=copy \
     UV_FROZEN=1 \
-    UV_MANAGED_PYTHON=1 \
-    UV_PYTHON=${PYTHON_VERSION} \
     UV_PROJECT_ENVIRONMENT=/opt/venv
 
 # Create a non-privileged user.
