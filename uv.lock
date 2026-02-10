@@ -2283,7 +2283,7 @@ requires-dist = [
     { name = "nomad-auto-xrd", extras = ["cpu-action"], marker = "extra == 'cpu-action'", git = "https://github.com/FAIRmat-NFDI/nomad-auto-xrd.git?rev=v0.3.9" },
     { name = "nomad-dtu-nanolab-plugin", marker = "extra == 'plugins'", git = "https://github.com/DTU-Nanolab-materials-discovery/nomad-dtu-nanolab-plugin.git?rev=v0.4.9" },
     { name = "nomad-lab", extras = ["dev", "infrastructure", "parsing"], marker = "extra == 'dev'", specifier = ">=1.3.4" },
-    { name = "nomad-lab", extras = ["infrastructure", "parsing"], specifier = "==1.4.2.dev34" },
+    { name = "nomad-lab", extras = ["infrastructure", "parsing"], specifier = "==1.4.2.dev34+gfc99c4475" },
     { name = "nomad-material-processing", marker = "extra == 'plugins'", specifier = "==1.0.4" },
     { name = "nomad-measurements", marker = "extra == 'plugins'", specifier = ">=1.3.2" },
     { name = "nomad-normalizer-plugin-bandstructure", marker = "extra == 'plugins'", specifier = ">=1.0" },
@@ -2331,7 +2331,7 @@ dependencies = [
 
 [[package]]
 name = "nomad-lab"
-version = "1.4.2.dev34+g07b378aba"
+version = "1.4.2.dev34+gfc99c4475"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "ase" },
@@ -2373,9 +2373,9 @@ dependencies = [
     { name = "unidecode" },
     { name = "xarray" },
 ]
-sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/df6322241b73e9637724ab78731e0d16b6ee87e710630819ddd7d61331fb7ea2/nomad_lab-1.4.2.dev34+g07b378aba.tar.gz", hash = "sha256:df6322241b73e9637724ab78731e0d16b6ee87e710630819ddd7d61331fb7ea2" }
+sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/5045b3dc0a556a83a73675ab9863f2185c61980d87e6e7c5349c3089cd30aa7b/nomad_lab-1.4.2.dev34+gfc99c4475.tar.gz", hash = "sha256:5045b3dc0a556a83a73675ab9863f2185c61980d87e6e7c5349c3089cd30aa7b" }
 wheels = [
-    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/14fe2013bab8120b16ac6a7581536955961787fdc63a2e133a741a202440bc5a/nomad_lab-1.4.2.dev34+g07b378aba-py3-none-any.whl", hash = "sha256:14fe2013bab8120b16ac6a7581536955961787fdc63a2e133a741a202440bc5a" },
+    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/c42009b69e4522af23eabd221ad0b4100ef6abc6916211782f2cdbf605f5274d/nomad_lab-1.4.2.dev34+gfc99c4475-py3-none-any.whl", hash = "sha256:c42009b69e4522af23eabd221ad0b4100ef6abc6916211782f2cdbf605f5274d" },
 ]
 
 [package.optional-dependencies]
