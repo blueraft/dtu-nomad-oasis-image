@@ -103,7 +103,7 @@ services:
   # nomad worker (processing)
   worker:
     restart: unless-stopped
-    image: ghcr.io/dtu-nanolab-materials-discovery/nomad-oasis-image:main
+    image: ghcr.io/blueraft/dtu-nomad-oasis-image:pr-1
     platform: linux/amd64
     environment:
       NOMAD_SERVICE: nomad_oasis_worker
@@ -126,7 +126,7 @@ services:
     volumes:
       # - ./configs/nomad.yaml:/app/nomad.yaml
       - ./.volumes/fs:/app/.volumes/fs
-    command: python -m nomad.cli admin run action-internal-worker
+    command: python -m nomad.cli admin run action-internal-worker --max-concurrent-activities 3 --max-tasks-per-child 10000
     healthcheck:
       # See https://keithtenzer.com/temporal/Deploying_Temporal_Worker_on_Kubernetes/#liveliness-and-readiness-probes
       # for rationale on using 'ls /' as a liveness/readiness probe for Temporal workers.
@@ -136,11 +136,7 @@ services:
       retries: 5
       start_period: 15s
     deploy:
-      replicas: 4
-      resources:
-        limits:
-          cpus: "4.0" # Maximum 4 CPU cores
-          memory: 8G # Maximum 8GB RAM
+      replicas: 6
       restart_policy:
         condition: on-failure
         delay: 5s
@@ -184,45 +180,10 @@ services:
   #     - ./.volumes/fs:/app/.volumes/fs
   #   command: python -m nomad.cli admin run action-gpu-worker
 
-  # nomad cpu worker (actions)
-  cpu_worker:
-    restart: unless-stopped
-    image: ghcr.io/dtu-nanolab-materials-discovery/nomad-oasis-image/cpu-action:main
-    platform: linux/amd64
-    container_name: nomad_oasis_cpu_worker
-    env_file:
-      - ./.env
-    environment:
-      NOMAD_SERVICE: nomad_oasis_cpu_worker
-      NOMAD_RABBITMQ_HOST: rabbitmq
-      NOMAD_ELASTIC_HOST: elastic
-      NOMAD_MONGO_HOST: mongo
-      NOMAD_LOGSTASH_HOST: logtransfer
-      NOMAD_TEMPORAL_HOST: temporal
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          cpus: "2.0" # Maximum 2 CPU cores
-          memory: 8G # Maximum 8GB RAM
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
-      elastic:
-        condition: service_healthy
-      mongo:
-        condition: service_healthy
-      temporal:
-        condition: service_healthy
-    volumes:
-      # - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
-    command: python -m nomad.cli admin run action-cpu-worker
-
   # nomad app (api + proxy)
   app:
     restart: unless-stopped
-    image: ghcr.io/dtu-nanolab-materials-discovery/nomad-oasis-image:main
+    image: ghcr.io/blueraft/dtu-nomad-oasis-image:pr-1
     platform: linux/amd64
     container_name: nomad_oasis_app
     environment:
@@ -267,7 +228,7 @@ services:
   # nomad remote tools hub (JupyterHUB, e.g. for AI Toolkit)
   north:
     restart: unless-stopped
-    image: ghcr.io/dtu-nanolab-materials-discovery/nomad-oasis-image:main
+    image: ghcr.io/blueraft/dtu-nomad-oasis-image:pr-1
     platform: linux/amd64
     container_name: nomad_oasis_north
     environment:
@@ -287,7 +248,7 @@ services:
       # - ./configs/nomad.yaml:/app/nomad.yaml
       - ./.volumes/fs:/app/.volumes/fs
       - /var/run/docker.sock:/var/run/docker.sock
-    user: '1000:991'
+    user: "1000:991"
     command: python -m nomad.cli admin run hub
     healthcheck:
       test:
@@ -305,7 +266,7 @@ services:
   # to enable the logtransfer service run "docker compose --profile with_logtransfer up"
   logtransfer:
     restart: unless-stopped
-    image: ghcr.io/dtu-nanolab-materials-discovery/nomad-oasis-image:main
+    image: ghcr.io/blueraft/dtu-nomad-oasis-image:pr-1
     platform: linux/amd64
     container_name: nomad_oasis_logtransfer
     environment:
@@ -415,19 +376,9 @@ services:
     depends_on:
       - temporal
     environment:
-      - TEMPORAL_CORS_ORIGINS=http://nomad.nanolab.dtu.dk/nomad-oasis/temporal
-      - TEMPORAL_AUTH_CALLBACK_URL=http://nomad.nanolab.dtu.dk/nomad-oasis/temporal/auth/sso/callback
-      - TEMPORAL_UI_PUBLIC_PATH=/nomad-oasis/temporal
       - TEMPORAL_ADDRESS=temporal:7233
-      - TEMPORAL_AUTH_LABEL=fairdi_nomad_prod
-      - TEMPORAL_AUTH_CLIENT_SECRET="test"
-      - TEMPORAL_AUTH_ENABLED=true
-      - TEMPORAL_AUTH_TYPE=oidc
-      - TEMPORAL_DISABLE_WRITE_ACTIONS=false
-      - TEMPORAL_AUTH_PROVIDER_URL=https://nomad-lab.eu/fairdi/keycloak/auth/realms/fairdi_nomad_prod
-      - TEMPORAL_AUTH_ISSUER_URL=https://nomad-lab.eu/fairdi/keycloak/auth/realms/fairdi_nomad_prod
-      - TEMPORAL_AUTH_CLIENT_ID=nomad_public
-      - TEMPORAL_AUTH_SCOPES=openid,email,profile
+    ports:
+      - 8080:8080
     env_file:
       - ./.env
     image: temporalio/ui:2.34.0
