@@ -62,7 +62,7 @@ extra-index-url = [
   "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple",
 ]
 constraint-dependencies = ["hyperspy>=1.7.6"]
-override-dependencies = ["jsonschema==4.23"]
+override-dependencies = ["jsonschema==4.23", "psutil>=7.0"]
 prerelease = "explicit"
 
 [tool.uv.sources]
