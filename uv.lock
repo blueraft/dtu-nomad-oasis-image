@@ -1965,7 +1965,7 @@ wheels = [
 
 [[package]]
 name = "molid"
-version = "0.8.4"
+version = "0.8.5"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "appdirs" },
@@ -1977,9 +1977,9 @@ dependencies = [
     { name = "requests" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a4/62/dd7744f77042a86711c121be99e7f84ad1e6dd342429ff1b1c538849ca8e/molid-0.8.4.tar.gz", hash = "sha256:779d8654ae66213065b9efc7feaf56389f499891ba2b4150151b16bbb6679432", size = 59453, upload-time = "2025-11-12T13:29:37.968Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/bc/45/b83788d9f1a8fa763e39bfbcbac6a4aed3f3ad192dc5c8e808c9b4bee2d5/molid-0.8.5.tar.gz", hash = "sha256:2f69da64bd7e0f884d0640f7231c29ed9ebd1fff3d565463e39bd87c5313165f", size = 59755, upload-time = "2026-03-12T10:18:49.797Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/32/0d/71ca88863f5423aece97473bb85cd9ce17d13a2fd1cc22de14ea2daf5058/molid-0.8.4-py3-none-any.whl", hash = "sha256:09aa7199a6481c596c59fe417a4b812b84c533d04a6e5a3cf4944a7d03420961", size = 54761, upload-time = "2025-11-12T13:29:36.71Z" },
+    { url = "https://files.pythonhosted.org/packages/4c/11/14c9b40ab5aa27f40b88d4754a18dd0e457aab03ae6d66de897577fb5697/molid-0.8.5-py3-none-any.whl", hash = "sha256:f016b8220d619db3751c2079ea3d4d8b6e0ca4ee9aee0c9f75388751c8a27ce0", size = 54919, upload-time = "2026-03-12T10:18:48.49Z" },
 ]
 
 [[package]]
@@ -2314,7 +2314,7 @@ requires-dist = [
     { name = "nomad-auto-xrd", extras = ["cpu-action"], marker = "extra == 'cpu-action'", git = "https://github.com/FAIRmat-NFDI/nomad-auto-xrd.git?rev=v0.3.9" },
     { name = "nomad-dtu-nanolab-plugin", marker = "extra == 'plugins'", git = "https://github.com/DTU-Nanolab-materials-discovery/nomad-dtu-nanolab-plugin.git?rev=v0.4.11" },
     { name = "nomad-lab", extras = ["dev", "infrastructure", "parsing"], marker = "extra == 'dev'", specifier = ">=1.3.4" },
-    { name = "nomad-lab", extras = ["infrastructure", "parsing"], specifier = "==1.4.2.dev84+g59886abac" },
+    { name = "nomad-lab", extras = ["infrastructure", "parsing"], specifier = "==1.4.2.dev97" },
     { name = "nomad-material-processing", marker = "extra == 'plugins'", specifier = "==1.0.4" },
     { name = "nomad-measurements", marker = "extra == 'plugins'", specifier = ">=1.3.2" },
     { name = "nomad-normalizer-plugin-bandstructure", marker = "extra == 'plugins'", specifier = ">=1.0" },
@@ -2363,7 +2363,7 @@ dependencies = [
 
 [[package]]
 name = "nomad-lab"
-version = "1.4.2.dev84+g59886abac"
+version = "1.4.2.dev97+gaf09c2888"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "ase" },
@@ -2406,9 +2406,9 @@ dependencies = [
     { name = "unidecode" },
     { name = "xarray" },
 ]
-sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/5f671d846dee9117104b78484bac3b4d1d42ba370fe0722a6f6391a49329a890/nomad_lab-1.4.2.dev84+g59886abac.tar.gz", hash = "sha256:5f671d846dee9117104b78484bac3b4d1d42ba370fe0722a6f6391a49329a890" }
+sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/3ac2cd92ca6433bbc86c464e9760b1433b41fa91ec38d8f72b439d41db030871/nomad_lab-1.4.2.dev97+gaf09c2888.tar.gz", hash = "sha256:3ac2cd92ca6433bbc86c464e9760b1433b41fa91ec38d8f72b439d41db030871" }
 wheels = [
-    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/84b39e9e1aec5dc21d451dfeab4103ea544b7fed1e8861349eb916fe3d71be3f/nomad_lab-1.4.2.dev84+g59886abac-py3-none-any.whl", hash = "sha256:84b39e9e1aec5dc21d451dfeab4103ea544b7fed1e8861349eb916fe3d71be3f" },
+    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/d4894317831e4eff59001394e9bf0cbc493974eef09ffa5e2f2237983d43c8a2/nomad_lab-1.4.2.dev97+gaf09c2888-py3-none-any.whl", hash = "sha256:d4894317831e4eff59001394e9bf0cbc493974eef09ffa5e2f2237983d43c8a2" },
 ]
 
 [package.optional-dependencies]
